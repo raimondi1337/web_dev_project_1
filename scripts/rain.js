@@ -7,10 +7,10 @@ window.Rain = (function(){
 		this.age = Math.floor(Math.random() * 128); 
 		this.color = "#A2B"; 
 		
-		this.canvasWidth = 640;
-		this.canvasHeight = 480
+		this.canvasWidth = CANVAS_WIDTH;
+		this.canvasHeight = CANVAS_HEIGHT;
 		
-		this.x = this.canvasWidth / 4 + Math.random() * this.canvasWidth / 2;   
+		this.x = this.canvasWidth * Math.random();    
 		this.y = 0;   
 		this.xVelocity = 0;  
 		this.yVelocity = 200;   

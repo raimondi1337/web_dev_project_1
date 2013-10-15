@@ -14,8 +14,6 @@ var paused;
 var lastTime = 0;
 var keydown =[];
 var val = player;
-var min = 0;
-var max = 640;
 var images={};
 var cooldown = 0;
 var enemies = [];
@@ -23,6 +21,8 @@ var score = 0;
 var ENEMY_PROBABILITY_PER_SECOND = 1.0;
 var backgroundCount = CANVAS_WIDTH;
 var backgroundSpeed = 2;
+var POINTS;
+var pointsCount=0;
 var IMAGE_SOURCES = {playerImage: "images/plane.png", 
 						tornadoImage: "images/tornado.png", 
 						rainImage: "images/rain.png", 
@@ -36,6 +36,7 @@ function init(){
 	var canvasElement = document.querySelector("canvas");
 	canvasElement.width = CANVAS_WIDTH;
 	canvasElement.height = CANVAS_HEIGHT;
+	POINTS = 0;
 	
 	ctx = canvasElement.getContext("2d");
 	
@@ -138,9 +139,22 @@ function animate(){
 		update(dt);
 		drawBackground();
 		drawSprites();
+		drawUI();
 	}
 	
 	window.requestAnimFrame(animate);
+}
+
+function drawUI(){
+	//points
+	pointsCount++;
+	if(pointsCount==10){
+		POINTS+=10;
+		pointsCount=0;
+	}
+	ctx.fillStyle = "white";
+		ctx.font = "24px Courier";
+		ctx.fillText(POINTS, 3, 20);
 }
 
 function update(dt){
