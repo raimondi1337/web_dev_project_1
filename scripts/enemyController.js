@@ -1,6 +1,6 @@
 "use strict";
 window.enemyController = (function(){
-	var difficulty=1;
+	var difficulty=.1;
 	function enemyController(){
 	};
 	
@@ -13,9 +13,19 @@ window.enemyController = (function(){
 			return enemy.active;
 		});
 		
-		if(Math.random() < difficulty/60){
+		if(Math.random()<difficulty){
+			this.generateEnemies();
+		}
+	};
+	
+	enemyController.prototype.generateEnemies = function(){	
+		var rand=Math.random();	
+		
+		if(rand < .1){
 			enemies.push(new Tornado());
+		} else if(rand < .66){
 			enemies.push(new Rain());
+		} else {
 			enemies.push(new Hail());
 		}
 	};

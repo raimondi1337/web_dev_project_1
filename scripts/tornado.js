@@ -13,9 +13,9 @@ window.Tornado = (function(){
 		   
 		this.xVelocity = 100;  
 		this.yVelocity = 0;   
-		this.amplitude = getRandom(1.5,7.0);  
-		this.width = 50;   
-		this.height = 90;
+		this.amplitude = getRandom(1.5,7.0);     
+		this.height = this.canvasHeight*.8*Math.random();
+		this.width = this.height*.555;
 		this.x = this.canvasWidth;   
 		this.y = this.canvasHeight - this.height/2;
 	};
