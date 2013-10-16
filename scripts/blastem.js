@@ -18,11 +18,12 @@ var images={};
 var cooldown = 0;
 var enemies = [];
 var score = 0;
-var ENEMY_PROBABILITY_PER_SECOND = 1.0;
 var backgroundCount = CANVAS_WIDTH;
 var backgroundSpeed = 2;
 var POINTS;
 var pointsCount=0;
+var ENEMY_CONTROLLER;
+var dt;
 var IMAGE_SOURCES = {playerImage: "images/plane.png", 
 						tornadoImage: "images/tornado.png", 
 						rainImage: "images/rain.png", 
@@ -37,6 +38,7 @@ function init(){
 	canvasElement.width = CANVAS_WIDTH;
 	canvasElement.height = CANVAS_HEIGHT;
 	POINTS = 0;
+	ENEMY_CONTROLLER = new enemyController();
 	
 	ctx = canvasElement.getContext("2d");
 	
@@ -133,7 +135,7 @@ function init(){
 }
 
 function animate(){
-	var dt = calculateDeltaTime();
+	dt = calculateDeltaTime();
 	
 	if(!paused){
 		update(dt);
@@ -179,20 +181,7 @@ function update(dt){
 	player.y = (clamp(player.y, 0 + player.height/2, CANVAS_HEIGHT - player.height/2));
 				
 	//enemies
-	enemies.forEach(function(enemy){
-		enemy.update(dt);
-	});
-	
-	enemies = enemies.filter(function(enemy){
-		return enemy.active;
-	});
-	
-	if(Math.random() < ENEMY_PROBABILITY_PER_SECOND/60){
-		enemies.push(new Tornado());
-		enemies.push(new Rain());
-		enemies.push(new Hail());
-		console.log("new enemy created. enemies.length = " + enemies.length);
-	}
+	ENEMY_CONTROLLER.update();
 }
 
 function drawSprites(){
