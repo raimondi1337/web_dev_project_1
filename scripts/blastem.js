@@ -152,6 +152,10 @@ function drawUI(){
 	pointsCount++;
 	if(pointsCount==10){
 		POINTS+=10;
+		//increase difficulty
+		if(POINTS%1000==0){
+			ENEMY_CONTROLLER.increaseDifficulty();
+		}
 		pointsCount=0;
 	}
 	ctx.fillStyle = "white";

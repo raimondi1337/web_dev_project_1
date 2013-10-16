@@ -1,8 +1,12 @@
 "use strict";
 window.enemyController = (function(){
-	var difficulty=.1;
+	var difficulty=.01;
 	function enemyController(){
 	};
+	
+	enemyController.prototype.increaseDifficulty = function(){
+		difficulty+=.02;
+	}
 	
 	enemyController.prototype.update = function(ctx){
 		enemies.forEach(function(enemy){
@@ -21,7 +25,7 @@ window.enemyController = (function(){
 	enemyController.prototype.generateEnemies = function(){	
 		var rand=Math.random();	
 		
-		if(rand < .1){
+		if(rand < .05){
 			enemies.push(new Tornado());
 		} else if(rand < .66){
 			enemies.push(new Rain());
