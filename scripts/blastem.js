@@ -55,6 +55,11 @@ function init(){
 			var halfH=this.height/2;
 
 			this.showExhaust();
+			
+			//temporary bounding box
+			ctx.fillStyle ="rgba(0, 255, 0, 0.66)";
+			ctx.strokeRect(this.x-halfW,this.y-halfH,this.width,this.height);
+			//draw player sprite
 			ctx.drawImage(images["playerImage"],this.x-halfW,this.y-halfH,this.width,this.height);
 		},
 		
