@@ -8,6 +8,7 @@ var CANVAS_HEIGHT = window.innerHeight-30;
 var KEYBOARD = {"KEY_LEFT":37,"KEY_UP":38,"KEY_RIGHT":39,"KEY_DOWN":40,"KEY_SPACE":32};
 
 //GLOBALS
+var canvasElement;
 var ctx;
 var player;
 var paused;
@@ -34,15 +35,12 @@ var IMAGE_SOURCES = {playerImage: "images/plane.png",
 
 
 function init(){
-	var canvasElement = document.querySelector("canvas");
+	canvasElement = document.querySelector("canvas");
 	canvasElement.width = CANVAS_WIDTH;
 	canvasElement.height = CANVAS_HEIGHT;
 	POINTS = 0;
-	ENEMY_CONTROLLER = new enemyController();
-	
+	ENEMY_CONTROLLER = new enemyController();	
 	ctx = canvasElement.getContext("2d");
-	
-	
 	
 	//create player
 	player = {
@@ -115,21 +113,6 @@ function init(){
 		keydown[e.keyCode]=false;
 	});
 	
-	//enemy = {
-		// color: "yellow",
-		// x: 320,
-		// y: 420,
-		// width: 152,
-		// height: 180,
-		// speed: 100,
-		// draw: function(){
-			// var halfW=this.width/2;
-			// var halfH=this.height/2;
-			// ctx.drawImage(images["tornadoImage"],this.x-halfW,this.y-halfH,this.width,this.height);
-		// },
-	
-	// };
-	
 	//start game
 	animate();
 }
@@ -186,6 +169,17 @@ function update(dt){
 				
 	//enemies
 	ENEMY_CONTROLLER.update();
+	
+	//collision
+	for(var i=0;i<enemies.length;i++){
+		if(collides(player,enemies[i])){
+			gameOver();
+		}
+	}
+}
+
+function gameOver(){
+	console.log("GAME OVER");
 }
 
 function drawSprites(){
