@@ -130,6 +130,8 @@ function animate(){
 		drawBackground();
 		drawSprites();
 		drawUI();
+	} else {
+		drawGameOver();
 	}
 	
 	window.requestAnimFrame(animate);
@@ -178,13 +180,25 @@ function update(dt){
 	//collision
 	for(var i=0;i<enemies.length;i++){
 		if(collides(player,enemies[i])){
-			gameOver();
+			if(enemies[i].name=="tornado"){
+				console.log("touched tornado speed =" + enemies[i].xVelocity);
+				player.x -= player.speed * dt;
+			}else{
+				paused=true;
+			}
 		}
 	}
 }
 
-function gameOver(){
-	console.log("GAME OVER");
+function drawGameOver(){
+	ctx.fillStyle ="rgba(50, 150, 250, 1)";
+	ctx.fillRect(0,0,CANVAS_WIDTH,CANVAS_HEIGHT);
+	
+	ctx.fillStyle ="rgba(10, 10, 10, 1)";
+	ctx.font="48px Concert One";
+	ctx.fillText("GAME OVER",CANVAS_WIDTH/2-100,CANVAS_HEIGHT/2-55);
+	ctx.fillText("Your score is " + POINTS,CANVAS_WIDTH/2-100,CANVAS_HEIGHT/2);
+	ctx.fillText("Press F5 to replay...",CANVAS_WIDTH/2-100,CANVAS_HEIGHT/2+55);
 }
 
 function drawSprites(){

@@ -3,6 +3,7 @@ window.Tornado = (function(){
 	
 	function Tornado(screenWidth, screenHeight){
 		//ivars
+		this.name="tornado";
 		this.active = true;   
 		this.age = Math.floor(Math.random() * 28); 
 		this.color = "#A2B"; 

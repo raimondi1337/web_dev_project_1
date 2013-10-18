@@ -2,6 +2,7 @@
 window.Hail = (function(){
 	function Hail(screenWidth, screenHeight){
 		//ivars
+		this.name="hail";
 		this.active = true;   
 		this.age = Math.floor(Math.random() * 50); 
 		this.color = "#A2B"; 

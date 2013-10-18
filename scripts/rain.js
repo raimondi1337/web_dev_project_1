@@ -3,6 +3,7 @@ window.Rain = (function(){
 	
 	function Rain(screenWidth, screenHeight){
 		//ivars
+		this.name="rain";
 		this.active = true;   
 		this.age = Math.floor(Math.random() * 128); 
 		this.color = "#A2B"; 
