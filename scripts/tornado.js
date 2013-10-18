@@ -1,6 +1,10 @@
+/*
+this code was taken from the blastem code used in class with a few minor changes.
+*/
 "use strict";
 window.Tornado = (function(){
 	
+	//tornado function. sets its velocity, height, width, x and y position, and so on
 	function Tornado(screenWidth, screenHeight){
 		//ivars
 		this.active = true;   
@@ -26,6 +30,7 @@ window.Tornado = (function(){
 		this.y >= 0 && this.y <= this.canvasHeight;  
 	};
 	
+	//draws the tornado image
 	Tornado.prototype.draw = function(ctx){
 		var halfW = this.width/2;
 		var halfH = this.height/2;
@@ -35,7 +40,8 @@ window.Tornado = (function(){
 			this.x - halfW, this.y - halfH, this.width, this.height
 			);
 		};	
-		
+	
+	//update function for the tornado
 	Tornado.prototype.update = function(dt){
 		this.xVelocity = -this.amplitude;
 		this.x += this.xVelocity;

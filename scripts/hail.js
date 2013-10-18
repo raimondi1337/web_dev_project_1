@@ -1,3 +1,6 @@
+/*
+this code was taken from the blastem code used in class with a few minor changes.
+*/
 "use strict";
 window.Hail = (function(){
 	function Hail(screenWidth, screenHeight){
