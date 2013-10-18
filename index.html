@@ -1,68 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset=utf-8 />
-<title>Plane game!</title>
-<script src="scripts/utils.js"></script>
-<script src="scripts/enemyController.js"></script>
-<script src="scripts/main.js"></script>
-<script src="scripts/tornado.js"></script>
-<script src="scripts/rain.js"></script>
-<script src="scripts/hail.js"></script>		
-<link href='http://fonts.googleapis.com/css?family=Exo:700,100italic' rel='stylesheet' type='text/css'>
-<script>
-	//code to hide/show the start screen and game screen
-	window.onload=function(){;
-	
-	var startBtn = document.getElementById("startButton");
-	
-	startBtn.onclick = function(){
-		document.getElementById("gameCanvas").style.visibility = 'visible';
-		document.getElementById("startScreen").style.visibility ="hidden";
-	};
-}
-
-</script>
-<style>
-#startScreen{
-	background: black;
-	height: 180px;
-	width: 100%;
-	padding-top: 10px;
-	position: fixed;
-}
-
-h1{
-	color: white;
-	font-family: 'Exo', sans-serif;
-
-	}
-
-h2{
-	color: white;
-	font-family: 'Exo', sans-serif;
-	font-weight: 100;
-	font-size: 20px;
-	}
-
-#startButton{
-	width: 80px;
-	height: 30px;
-	position:fixed;
-	
-}
-</style>
-</head>
+    <head>
+        <meta charset=utf-8 />
+        <title>Plane game!</title>
+		<script src="scripts/utils.js"></script>
+        <script src="scripts/enemyController.js"></script>
+        <script src="scripts/blastem.js"></script>
+		<script src="scripts/tornado.js"></script>
+		<script src="scripts/rain.js"></script>
+		<script src="scripts/hail.js"></script>
+    </head>
     
-<body>
-	<div id="startScreen">
-	<h1>How Long can you Survive the Elements?</h1>
-	<h2>Use the arrow keys to avoid the enemy weather.</h2>
-	<input id="startButton" type="button" value="play"/>
-	</div>
-
-    <canvas id="gameCanvas" style="visibility: hidden;">
-       	Get a real browser!
-    </canvas>
-</body>
+    <body>
+    	<canvas id="canvas">
+        	Get a real browser!
+        </canvas>
+    </body>
 </html>
